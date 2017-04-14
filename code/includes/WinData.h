@@ -21,3 +21,6 @@ typedef struct ProcessInfo
 } PrInfo;
 
 list<PrInfo> GetProcList();
+int GetProcMem(int id);
+void GetProcUser(char * user, int id);
+void countCPU(list<PrInfo> ls);
