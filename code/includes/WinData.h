@@ -20,7 +20,13 @@ typedef struct ProcessInfo
 	int Memory;
 } PrInfo;
 
-list<PrInfo> GetProcList();
-int GetProcMem(int id);
-void GetProcUser(char * user, int id);
-void countCPU(list<PrInfo> ls);
+class LsProcess
+{
+	private:
+		int GetProcMem(int id);
+		void GetProcUser(char * user, int id);
+		void countCPU(list<PrInfo> ls);
+	public:
+		int GetProcList();
+		list<PrInfo> Prlist;
+};

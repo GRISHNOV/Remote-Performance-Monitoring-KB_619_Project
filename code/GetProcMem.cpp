@@ -1,6 +1,6 @@
 #include "WinData.h"
 
-int GetProcMem(int id)
+int LsProcess::GetProcMem(int id)
 {
 	PROCESS_MEMORY_COUNTERS mem;
 	HANDLE hp;

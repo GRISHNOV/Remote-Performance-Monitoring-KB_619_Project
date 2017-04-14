@@ -1,6 +1,6 @@
 #include "WinData.h"
 
-void countCPU(list<PrInfo> ls)
+void LsProcess::countCPU(list<PrInfo> ls)
 {
 
 }

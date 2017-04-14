@@ -1,8 +1,7 @@
 #include "WinData.h"
 
-list<PrInfo> GetProcList()
+int LsProcess::GetProcList()
 {
-	list<PrInfo> Prlist;
 	PrInfo tmp;
 	HANDLE h;
 	PROCESSENTRY32 p;
@@ -11,8 +10,7 @@ list<PrInfo> GetProcList()
 	h = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
 	if (h == INVALID_HANDLE_VALUE)
 	{
-		tmp.id = -(int)GetLastError();;
-		return Prlist;
+		return -1;
 	}
 
 	Process32First(h, &p);
@@ -26,5 +24,5 @@ list<PrInfo> GetProcList()
 		Prlist.push_back(tmp);
 	} while (Process32Next(h, &p));
 	CloseHandle(h);
-	return Prlist;
+	return 0;
 }

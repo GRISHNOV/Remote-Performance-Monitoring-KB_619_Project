@@ -1,6 +1,6 @@
 #include "WinData.h"
 
-void GetProcUser(char * user, int id)
+void LsProcess::GetProcUser(char * user, int id)
 {
 
 }
