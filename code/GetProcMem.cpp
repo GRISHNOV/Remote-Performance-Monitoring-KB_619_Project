@@ -12,5 +12,5 @@ int LsProcess::GetProcMem(int id)
 	}
 	GetProcessMemoryInfo(hp, &mem, sizeof(mem));
 	CloseHandle(hp);
-	return mem.WorkingSetSize;
+	return mem.WorkingSetSize / 1024;
 }

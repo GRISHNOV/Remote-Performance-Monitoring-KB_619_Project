@@ -2,7 +2,9 @@
 
 int LsProcess::GetProcList()
 {
+	
 	PrInfo tmp;
+	char * user;
 	HANDLE h;
 	PROCESSENTRY32 p;
 	int i = 0;
@@ -10,6 +12,7 @@ int LsProcess::GetProcList()
 	h = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
 	if (h == INVALID_HANDLE_VALUE)
 	{
+
 		return -1;
 	}
 
@@ -19,6 +22,7 @@ int LsProcess::GetProcList()
 		tmp.id = p.th32ProcessID;
 		strcpy_s(tmp.name, p.szExeFile);
 		tmp.Memory = GetProcMem(tmp.id);
+		GetProcUser(user, tmp.id);
 		//
 		//
 		Prlist.push_back(tmp);

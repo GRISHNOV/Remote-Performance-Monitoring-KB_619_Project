@@ -8,6 +8,8 @@
 #include <TCHAR.h>
 #include <Pdh.h>
 #include <list>
+#include <Winnt.h>
+
 
 using namespace std;
 
@@ -25,7 +27,7 @@ class LsProcess
 	private:
 		int GetProcMem(int id);
 		void GetProcUser(char * user, int id);
-		void countCPU(list<PrInfo> ls);
+		void countCPU();
 	public:
 		int GetProcList();
 		list<PrInfo> Prlist;
