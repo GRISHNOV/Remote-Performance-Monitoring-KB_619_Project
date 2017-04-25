@@ -1,18 +1,25 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "WinData.h"
 #include <stdio.h>
+#include <locale.h>
 
 int main()
 {
+	setlocale(LC_ALL, "rus");
 	LsProcess a;
 	PrInfo t;
-	a.GetProcList();
-	while (!a.Prlist.empty())
-	{
-		t = a.Prlist.front();
-		//% 6i %-25ws %3.1f%% %7iKB
-		printf("%6i %-25s %3.1f %7iKB\n", t.id, t.name, 0.0, t.Memory);
-		a.Prlist.pop_front();
-	}
+	EnableDebugPrivilages();
+	
+		printf("--------------------------------------------------------------------------------\n");
+		a.GetProcList();
+		while (!a.Prlist.empty())
+		{
+			t = a.Prlist.front();
+			printf("UserName: %-15s %6i %-25s %3.1f %7iKB\n", t.user, t.id, t.name, t.CpuUsage, t.Memory);
+			//printf("UserName: %-25s\n", t.user);
+			a.Prlist.pop_front();
+		}
+	
 	system("pause");
 	return 0;
 }

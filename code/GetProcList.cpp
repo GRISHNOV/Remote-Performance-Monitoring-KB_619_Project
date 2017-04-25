@@ -4,7 +4,6 @@ int LsProcess::GetProcList()
 {
 	
 	PrInfo tmp;
-	char * user;
 	HANDLE h;
 	PROCESSENTRY32 p;
 	int i = 0;
@@ -17,12 +16,15 @@ int LsProcess::GetProcList()
 	}
 
 	Process32First(h, &p);
+	//Process32Next(h, &p);
+	//Process32Next(h, &p);
 	do
 	{
 		tmp.id = p.th32ProcessID;
 		strcpy_s(tmp.name, p.szExeFile);
 		tmp.Memory = GetProcMem(tmp.id);
-		GetProcUser(user, tmp.id);
+		GetProcUser(tmp.user, tmp.id);
+		countCPU(&tmp.CpuUsage, tmp.name, tmp.id);
 		//
 		//
 		Prlist.push_back(tmp);
