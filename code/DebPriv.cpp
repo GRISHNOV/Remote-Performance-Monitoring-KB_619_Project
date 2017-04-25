@@ -1,3 +1,6 @@
+
+//Это не нужно, если запускать от системной учетки
+
 #include "WinData.h"
 
 BOOL EnableDebugPrivilages()

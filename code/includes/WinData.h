@@ -36,10 +36,13 @@ class LsProcess
 };
 
 
+//Это не нужно, если запускать от системной учетки
 BOOL SetPrivilege(
 	HANDLE hToken,          // access token handle
 	LPCTSTR lpszPrivilege,  // name of privilege to enable/disable
 	BOOL bEnablePrivilege   // to enable or disable privilege
-);
+);//
 
+//Это не нужно, если запускать от системной учетки
 BOOL EnableDebugPrivilages();
+//
