@@ -17,7 +17,7 @@ int main()
 		while (!a.Prlist.empty())
 		{
 			t = a.Prlist.front();
-			printf("UserName: %-15s %6i %-25s %3.1f %7iKB\n", t.user, t.id, t.name, t.CpuUsage, t.Memory);
+			printf("UserName: %-15s %6i %-25s %3.5f %7iKB\n", t.user, t.id, t.name, t.CpuUsage, t.Memory);
 			a.Prlist.pop_front();
 		}
 	

@@ -26,13 +26,22 @@ typedef struct ProcessInfo
 
 class LsProcess
 {
-	private:
-		int GetProcMem(int id);
-		void GetProcUser(char * user, int id);
-		void countCPU(double * proc, TCHAR * name, int id);
-	public:
-		int GetProcList();
-		list<PrInfo> Prlist;
+private:
+	void addtoquery(double * proc, CONST TCHAR * name, int id);
+	PDH_HQUERY hq;
+	typedef struct CountersList
+	{
+		PDH_HCOUNTER hc;
+		double *c;
+	} pdhc;
+	list<pdhc> cl;
+	void initPDH();
+	int GetProcMem(int id);
+	void GetProcUser(char * user, int id);
+	void countCPU();
+public:
+	int GetProcList();
+	list<PrInfo> Prlist;
 };
 
 
@@ -43,6 +52,6 @@ BOOL SetPrivilege(
 	BOOL bEnablePrivilege   // to enable or disable privilege
 );//
 
-//Это не нужно, если запускать от системной учетки
+  //Это не нужно, если запускать от системной учетки
 BOOL EnableDebugPrivilages();
 //
