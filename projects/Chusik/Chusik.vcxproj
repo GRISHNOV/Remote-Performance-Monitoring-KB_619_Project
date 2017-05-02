@@ -93,6 +93,9 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>C:\Users\Ivan\Documents\GitHub\CHUSIK\code\includes\;C:\Users\Ivan\Documents\GitHub\CHUSIK\code\;C:\Users\Ivan\Documents\GitHub\CHUSIK\includes\;C:\Users\Григорий\Documents\GitHub\Remote-Performance-Monitoring-KB_619_Project\code\includes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalDependencies>pdh.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

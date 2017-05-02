@@ -12,6 +12,12 @@
 #include <Winnt.h>
 #include <Sddl.h>
 #include <string.h>
+#define SORT_BY_MEM 0x10
+#define SORT_BY_CPU 0x20
+#define SORT_BY_NAME 0x30
+#define SORT_UP 0x00
+#define SORT_DOWN 0x01
+#define FILTER_USER 0x100
 
 using namespace std;
 
@@ -24,9 +30,17 @@ typedef struct ProcessInfo
 	int Memory;
 } PrInfo;
 
+bool pred(const PrInfo& a);
+bool cmp(const PrInfo& a, const PrInfo& b);
+
 class LsProcess
 {
 private:
+	//char filt_str[MAX_PATH];
+	//bool pred(const PrInfo& a);
+	//DWORD sort_flag;
+	void filter(CONST DWORD flags);
+	//bool cmp(const PrInfo& a, const PrInfo& b);
 	void addtoquery(double * proc, CONST TCHAR * name, int id);
 	PDH_HQUERY hq;
 	typedef struct CountersList
@@ -40,7 +54,7 @@ private:
 	void GetProcUser(char * user, int id);
 	void countCPU();
 public:
-	int GetProcList();
+	int GetProcList(CONST DWORD flags, char * filt_opt);
 	list<PrInfo> Prlist;
 };
 
