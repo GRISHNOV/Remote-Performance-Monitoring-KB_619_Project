@@ -37,7 +37,7 @@ int LsProcess::GetProcList(CONST DWORD flags, char * filt_opt)
 
 void LsProcess::filter(CONST DWORD flags)
 {
-	if (flags == FILTER_USER)
+	if ((flags & 0xf00) == FILTER_USER)
 	{
 		Prlist.remove_if(pred);
 	}
@@ -47,19 +47,19 @@ void LsProcess::filter(CONST DWORD flags)
 
 bool cmp(const PrInfo & a, const PrInfo & b)
 {
-
-	switch (sort_flag & 0xf0)
+	DWORD tmp = sort_flag & 0xf0, tm2 = sort_flag & 0xf;
+	switch (tmp)
 	{
 	case 0x10:
-		if ((a.Memory < b.Memory) ^ (sort_flag & 0xf))
+		if ((a.Memory < b.Memory) != tm2)
 			return true;
 		break;
 	case 0x20:
-		if ((a.CpuUsage < b.CpuUsage) ^ (sort_flag & 0xf))
+		if ((a.CpuUsage < b.CpuUsage) != tm2)
 			return true;
 		break;
 	case 0x30:
-		if ((strcmp(a.name, b.name) < 0) ^ (sort_flag & 0xf))
+		if ((strcmp(a.name, b.name) < 0) != tm2)
 			return true;
 		break;
 	default:

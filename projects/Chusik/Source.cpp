@@ -13,7 +13,7 @@ int main()
 	//
 	
 	printf("--------------------------------------------------------------------------------\n");
-		a.GetProcList(SORT_BY_CPU | SORT_UP, "");
+		a.GetProcList(SORT_BY_CPU | SORT_UP | FILTER_USER, "Ivan");
 		while (!a.Prlist.empty())
 		{
 			t = a.Prlist.front();
