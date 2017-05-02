@@ -43,23 +43,25 @@ void LsProcess::filter(CONST DWORD flags)
 	}
 	sort_flag = flags;
 	Prlist.sort(cmp);
+	if (flags & 0x1)
+		Prlist.reverse();
 }
 
 bool cmp(const PrInfo & a, const PrInfo & b)
 {
-	DWORD tmp = sort_flag & 0xf0, tm2 = sort_flag & 0xf;
+	DWORD tmp = sort_flag & 0xf0;
 	switch (tmp)
 	{
 	case 0x10:
-		if ((a.Memory < b.Memory) != tm2)
+		if (a.Memory < b.Memory)
 			return true;
 		break;
 	case 0x20:
-		if ((a.CpuUsage < b.CpuUsage) != tm2)
+		if (a.CpuUsage < b.CpuUsage)
 			return true;
 		break;
 	case 0x30:
-		if ((strcmp(a.name, b.name) < 0) != tm2)
+		if (strcmp(a.name, b.name) < 0)
 			return true;
 		break;
 	default:
