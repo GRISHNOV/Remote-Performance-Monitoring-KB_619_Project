@@ -39,7 +39,6 @@ private:
 	//char filt_str[MAX_PATH];
 	//bool pred(const PrInfo& a);
 	//DWORD sort_flag;
-	void filter(CONST DWORD flags);
 	//bool cmp(const PrInfo& a, const PrInfo& b);
 	void addtoquery(double * proc, CONST TCHAR * name, int id);
 	PDH_HQUERY hq;
@@ -54,7 +53,8 @@ private:
 	void GetProcUser(char * user, int id);
 	void countCPU();
 public:
-	int GetProcList(CONST DWORD flags, char * filt_opt);
+	void filter(CONST DWORD flags, char * filt_opt);
+	int GetProcList();
 	list<PrInfo> Prlist;
 };
 

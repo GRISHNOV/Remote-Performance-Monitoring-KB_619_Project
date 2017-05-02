@@ -13,7 +13,8 @@ int main()
 	//
 	
 	printf("--------------------------------------------------------------------------------\n");
-		a.GetProcList(SORT_BY_MEM | SORT_DOWN | FILTER_USER, "Ivan");
+		a.GetProcList();
+		//a.filter(SORT_BY_MEM | SORT_DOWN | FILTER_USER, "Ivan");
 		while (!a.Prlist.empty())
 		{
 			t = a.Prlist.front();

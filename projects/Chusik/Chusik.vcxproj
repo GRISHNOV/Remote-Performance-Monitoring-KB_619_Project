@@ -24,6 +24,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\code\CountCPU.cpp" />
     <ClCompile Include="..\..\code\DebPriv.cpp" />
+    <ClCompile Include="..\..\code\Filter.cpp" />
     <ClCompile Include="..\..\code\GetProcList.cpp" />
     <ClCompile Include="..\..\code\GetProcMem.cpp" />
     <ClCompile Include="..\..\code\GetProcUser.cpp" />
