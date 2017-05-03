@@ -11,10 +11,11 @@ int main()
 	//Это не нужно, если запускать от системной учетки
 	EnableDebugPrivilages();
 	//
+	char str[] = "cd система";
 	
 	printf("--------------------------------------------------------------------------------\n");
 		a.GetProcList();
-		//a.filter(SORT_BY_MEM | SORT_DOWN | FILTER_USER, "Ivan");
+		a.filter(ConvStrToFl(str), str);
 		while (!a.Prlist.empty())
 		{
 			t = a.Prlist.front();
@@ -24,4 +25,46 @@ int main()
 	
 	system("pause");
 	return 0;
+}
+
+DWORD ConvStrToFl(char * str)
+{
+	char stmp[MAX_PATH] = "", t;
+	BOOL fl = FALSE;
+	DWORD tmp = 0;
+	int i = 0;
+	while ((str[i] > 'a') && (str[i] < 'z'))
+	{
+		switch (str[i])
+		{
+		case 'c':
+			tmp = tmp | SORT_BY_CPU;
+			break;
+		case 'm':
+			tmp = tmp | SORT_BY_MEM;
+			break;
+		case 'n':
+			tmp = tmp | SORT_BY_NAME;
+			break;
+		case 'u':
+			tmp = tmp | SORT_UP;
+			break;
+		case 'd':
+			tmp = tmp | SORT_DOWN;
+			break;
+		case 'f':
+			tmp = tmp | FILTER_USER;
+			fl = true;
+			break;
+		default:
+			break;
+		}
+		i++;
+	}
+	if (fl)
+	{
+		sscanf(str, "%s%s", stmp, stmp);
+		strcpy(str, stmp);
+	}
+	return tmp;
 }

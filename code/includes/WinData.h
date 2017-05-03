@@ -58,6 +58,7 @@ public:
 	list<PrInfo> Prlist;
 };
 
+DWORD ConvStrToFl(char * str);
 
 //Это не нужно, если запускать от системной учетки
 BOOL SetPrivilege(
