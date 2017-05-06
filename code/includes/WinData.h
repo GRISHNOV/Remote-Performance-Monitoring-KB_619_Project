@@ -46,6 +46,7 @@ private:
 	{
 		PDH_HCOUNTER hc;
 		double *c;
+		int id;
 	} pdhc;
 	list<pdhc> cl;
 	void initPDH();
