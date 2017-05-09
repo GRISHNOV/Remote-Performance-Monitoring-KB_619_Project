@@ -11,15 +11,20 @@ int main()
 	//Это не нужно, если запускать от системной учетки
 	EnableDebugPrivilages();
 	//
-	char str[] = "cd система";
-	
+	char str[260] = "cd система", name[260];
+	scanf("%s", str);
+	scanf("%s", name);
+	strcat(str," ");
+	strcat(str, name);
+
+	printf("%3.1lf%% %iKB\n", GetTotalCPU(), GetMem(TOTAL_MEM));
 	printf("--------------------------------------------------------------------------------\n");
 		a.GetProcList();
 		a.filter(ConvStrToFl(str), str);
 		while (!a.Prlist.empty())
 		{
 			t = a.Prlist.front();
-			printf("UserName: %-15s %6i %-25s %3.1f%% %7iKB\n", t.user, t.id, t.name, t.CpuUsage, t.Memory);
+			printf("UserName: %-15s %6i %-25s %3.1lf%% %7iKB\n", t.user, t.id, t.name, t.CpuUsage, t.Memory);
 			a.Prlist.pop_front();
 		}
 	
@@ -29,7 +34,7 @@ int main()
 
 DWORD ConvStrToFl(char * str)
 {
-	char stmp[MAX_PATH] = "", t;
+	char stmp[MAX_PATH] = "";
 	BOOL fl = FALSE;
 	DWORD tmp = 0;
 	int i = 0;

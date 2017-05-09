@@ -19,6 +19,11 @@
 #define SORT_DOWN 0x01
 #define FILTER_USER 0x100
 
+#define TOTAL_MEM 0x1
+#define AVAIL_MEM 0x2
+#define USED_MEM 0x4
+#define MEM_LOAD_P 0x8
+
 using namespace std;
 
 typedef struct ProcessInfo
@@ -58,6 +63,10 @@ public:
 	int GetProcList();
 	list<PrInfo> Prlist;
 };
+
+
+double GetTotalCPU();
+DWORD GetMem(DWORD flag);
 
 DWORD ConvStrToFl(char * str);
 

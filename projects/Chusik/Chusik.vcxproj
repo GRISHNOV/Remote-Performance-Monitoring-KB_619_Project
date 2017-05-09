@@ -28,6 +28,8 @@
     <ClCompile Include="..\..\code\GetProcList.cpp" />
     <ClCompile Include="..\..\code\GetProcMem.cpp" />
     <ClCompile Include="..\..\code\GetProcUser.cpp" />
+    <ClCompile Include="..\..\code\GetTotalCPU.cpp" />
+    <ClCompile Include="..\..\code\GetMem.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
