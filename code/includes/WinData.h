@@ -68,7 +68,7 @@ public:
 double GetTotalCPU();
 DWORD GetMem(DWORD flag);
 
-DWORD ConvStrToFl(char * str);
+DWORD ConvStrToFl(const char * str, char * name);
 
 //Это не нужно, если запускать от системной учетки
 BOOL SetPrivilege(

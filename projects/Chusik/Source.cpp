@@ -20,7 +20,7 @@ int main()
 	printf("%3.1lf%% %iKB\n", GetTotalCPU(), GetMem(TOTAL_MEM));
 	printf("--------------------------------------------------------------------------------\n");
 		a.GetProcList();
-		a.filter(ConvStrToFl(str), str);
+		a.filter(ConvStrToFl(str, name), name);
 		while (!a.Prlist.empty())
 		{
 			t = a.Prlist.front();
@@ -32,7 +32,7 @@ int main()
 	return 0;
 }
 
-DWORD ConvStrToFl(char * str)
+DWORD ConvStrToFl(const char * str, char * name)
 {
 	char stmp[MAX_PATH] = "";
 	BOOL fl = FALSE;
@@ -69,7 +69,7 @@ DWORD ConvStrToFl(char * str)
 	if (fl)
 	{
 		sscanf(str, "%s%s", stmp, stmp);
-		strcpy(str, stmp);
+		strcpy(name, stmp);
 	}
 	return tmp;
 }
